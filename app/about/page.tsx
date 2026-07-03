@@ -35,11 +35,11 @@ export default function About() {
           I did all of this manually. It was bad.
         </h1>
         <p style={{ fontSize: 16, color: MUTED, lineHeight: 1.75 }}>
-          Me (Gleb, founder of VisaArc and{" "}
+          I (Gleb - founder of VisaArc and{" "}
           <a href="https://thelvon.com" target="_blank" rel="noopener" style={{ color: ACCENT, textDecoration: "none" }}>
-            Thelvon)
+            Thelvon
           </a>
-          . I spent a year in China. I was enjoying Asia, running my YouTube channel, and helping students apply to universities. That&apos;s where I was, and that&apos;s what I was doing.
+          ){" "}spent a year in China. I was enjoying Asia, running my <a href="http://youtube.com/@kochevnik_gleb" target="_blank" rel="noopener" style={{ color: ACCENT, textDecoration: "none" }}>YouTube channel</a>, and helping students apply to universities (since that's what I did myself after living in Canada for 4 years, to try out that amazing Asian country).
         </p>
         <p style={{ fontSize: 16, color: MUTED, lineHeight: 1.75, marginTop: 20 }}>
           Every application meant pulling info from documents, typing it into forms field by field, and chasing down whatever was still missing. All manual. It sucked. Genuinely bad.
