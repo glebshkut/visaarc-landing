@@ -173,7 +173,7 @@ export function AccessModal({ onClose }: { onClose: () => void }) {
     const errs = validate();
     if (Object.keys(errs).length) { setErrors(errs); return; }
     setErrors({});
-    fetch("https://your-webhook-url.com", {
+    fetch("/api/access", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ name: name.trim(), email: email.trim(), phone, volume, source: "visaarc-landing", timestamp: new Date().toISOString() }),
@@ -280,10 +280,10 @@ export function AccessModal({ onClose }: { onClose: () => void }) {
                 <span style={{ fontSize: 14, ...WORDMARK, position: "relative", top: 1 }}>VisaArc</span>
               </div>
               <h2 style={{ fontSize: 22, fontWeight: 600, color: FG, letterSpacing: "-0.03em", marginBottom: 6 }}>
-                Try it out
+                Fill out the form
               </h2>
               <p style={{ fontSize: 13.5, color: MUTED, lineHeight: 1.65 }}>
-                Available to Regulated Canadian Immigration Consultants.
+                Available to Regulated Canadian Immigration Consultants only
               </p>
             </div>
 
@@ -368,7 +368,7 @@ export function AccessModal({ onClose }: { onClose: () => void }) {
               </Field>
 
               <CtaButton size="md" style={{ width: "100%", marginTop: 4, padding: "14px 24px", borderRadius: 8, fontSize: 14 }}>
-                Try it out →
+                Proceed →
               </CtaButton>
 
               <p style={{ fontSize: 11.5, color: "#6b7280", textAlign: "center", lineHeight: 1.6, marginTop: -2 }}>
@@ -416,7 +416,7 @@ export function Nav({
           <span style={{ fontSize: 16, ...WORDMARK, position: "relative", top: 1 }}>VisaArc</span>
         </Link>
         <a href="https://thelvon.com" target="_blank" rel="noopener"
-          style={{ fontSize: 12, color: MUTED, textDecoration: "none", letterSpacing: "-0.01em", transition: "color 0.12s" }}
+          style={{ fontSize: 12, color: MUTED, textDecoration: "none", letterSpacing: "-0.01em", paddingTop: 3, transition: "color 0.12s" }}
           onMouseEnter={e => (e.currentTarget.style.color = FG)}
           onMouseLeave={e => (e.currentTarget.style.color = MUTED)}>
           by Thelvon

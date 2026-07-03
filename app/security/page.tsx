@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Nav, Footer, AccessModal, BORDER, MUTED, ACCENT, FG, BG } from "../_components/shared";
+import { Nav, Footer, AccessModal, BORDER, MUTED, ACCENT, FG, BG, CtaButton } from "../_components/shared";
 
 const secItems = [
   {
@@ -68,34 +68,9 @@ export default function Security() {
         <p style={{ fontSize: 15, color: MUTED, lineHeight: 1.75, marginBottom: 32 }}>
           Have a specific security or compliance question before requesting access? We&apos;re glad to walk through our architecture on a call.
         </p>
-        <a
-          href="https://cal.com/team/thelvon/strategy-call"
-          target="_blank"
-          rel="noopener"
-          style={{
-            display: "inline-flex", alignItems: "center", gap: 8,
-            background: "linear-gradient(135deg, #6b9fff 0%, #5b8df6 40%, #4a7ae8 100%)",
-            color: "#fff", fontSize: 15, fontWeight: 600,
-            padding: "14px 32px", borderRadius: 9, textDecoration: "none",
-            letterSpacing: "-0.01em",
-            boxShadow: "0 0 0 1px rgba(91,141,246,0.35), 0 4px 16px rgba(91,141,246,0.28), 0 1px 3px rgba(0,0,0,0.5)",
-            transition: "transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease",
-          }}
-          onMouseEnter={e => {
-            const el = e.currentTarget as HTMLElement;
-            el.style.transform = "translateY(-1px)";
-            el.style.filter = "brightness(1.08)";
-            el.style.boxShadow = "0 0 0 1px rgba(91,141,246,0.5), 0 8px 28px rgba(91,141,246,0.38), 0 2px 6px rgba(0,0,0,0.5)";
-          }}
-          onMouseLeave={e => {
-            const el = e.currentTarget as HTMLElement;
-            el.style.transform = "";
-            el.style.filter = "";
-            el.style.boxShadow = "0 0 0 1px rgba(91,141,246,0.35), 0 4px 16px rgba(91,141,246,0.28), 0 1px 3px rgba(0,0,0,0.5)";
-          }}
-        >
-          Book a strategy call →
-        </a>
+        <CtaButton size="lg" onClick={() => setModalOpen(true)}>
+            Try it out →
+        </CtaButton>
       </section>
 
       <Footer onGetAccess={() => setModalOpen(true)} />
