@@ -19,6 +19,7 @@ const values = [
 ];
 
 export default function About() {
+  
   const [modalOpen, setModalOpen] = useState(false);
 
   return (
