@@ -84,7 +84,7 @@ export default function Page() {
           color: FG, marginBottom: 24, position: "relative",
         }}>
           Your practice deserves software that{" "}
-          <span style={{ color: ACCENT }}>actually works.</span>
+          <span style={{ color: ACCENT }}>actually works</span>
         </h1>
 
         <p style={{
@@ -96,7 +96,7 @@ export default function Page() {
 
         <div style={{ position: "relative", display: "flex", flexDirection: "column", alignItems: "center", gap: 14 }}>
           <CtaButton size="lg" onClick={() => setModalOpen(true)}>
-            Get your spot →
+            Claim your spot →
           </CtaButton>
           <p style={{ fontSize: 11.5, color: MUTED, letterSpacing: "0.025em" }}>
             No commitment required

@@ -32,14 +32,23 @@ export default function About() {
           About
         </p>
         <h1 style={{ fontSize: "clamp(28px,4.5vw,48px)", fontWeight: 600, letterSpacing: "-0.035em", lineHeight: 1.1, color: FG, marginBottom: 24 }}>
-          Built by consultants who got tired of doing it the hard way.
+          I did all of this manually. It was bad.
         </h1>
         <p style={{ fontSize: 16, color: MUTED, lineHeight: 1.75 }}>
-          Before writing a line of code, the{" "}
+          Me (Gleb, founder of VisaArc and{" "}
           <a href="https://thelvon.com" target="_blank" rel="noopener" style={{ color: ACCENT, textDecoration: "none" }}>
-            Thelvon
+            Thelvon)
           </a>
-          {" "}team ran an immigration consulting practice out of Edmonton. Every week meant manually pulling data from passports and supporting documents, re-entering it into IMM forms field by field, then chasing down whatever was still missing. The work was precise and repetitive - and it consumed hours that should have gone to clients. VisaArc is the tool we couldn&apos;t find.
+          . I spent a year in China. I was enjoying Asia, running my YouTube channel, and helping students apply to universities. That&apos;s where I was, and that&apos;s what I was doing.
+        </p>
+        <p style={{ fontSize: 16, color: MUTED, lineHeight: 1.75, marginTop: 20 }}>
+          Every application meant pulling info from documents, typing it into forms field by field, and chasing down whatever was still missing. All manual. It sucked. Genuinely bad.
+        </p>
+        <p style={{ fontSize: 16, color: MUTED, lineHeight: 1.75, marginTop: 20 }}>
+          Later, when I came back to Canada, I got the chance to talk with immigration consultant here and realized they have the exact same problem. Just different forms. AI is more accessible now, and I had a year of doing this the painful way. So I started building VisaArc to help them.
+        </p>
+        <p style={{ fontSize: 16, color: MUTED, lineHeight: 1.75, marginTop: 20 }}>
+          Especially with my software engineering background, I knew I could build a better solution.
         </p>
       </section>
 
@@ -58,7 +67,7 @@ export default function About() {
 
       <section style={{ padding: "0 24px 120px", maxWidth: 640, margin: "0 auto", textAlign: "center" }}>
         <p style={{ fontSize: 15, color: MUTED, lineHeight: 1.75, marginBottom: 32 }}>
-          Regulated consultants spend too much of their week on work that has nothing to do with the judgment they&apos;re licensed to provide. That&apos;s the problem VisaArc exists to solve.
+          I&apos;ve been on both sides of this. The tedious document work that eats hours you should spend on the people you&apos;re actually trying to help. That&apos;s what VisaArc is for.
         </p>
         <CtaButton size="lg" onClick={() => setModalOpen(true)}>
           Try it out →
