@@ -470,7 +470,7 @@ export function Footer({ onGetAccess }: { onGetAccess?: () => void }) {
               <span style={{ fontSize: 15, ...WORDMARK, position: "relative", top: 1 }}>VisaArc</span>
             </div>
             <p style={{ fontSize: 12.5, color: MUTED, lineHeight: 1.65, marginBottom: 16, maxWidth: 260 }}>
-              AI-powered practice management for Regulated Canadian Immigration Consultants.
+              AI-powered practice management and workflow automation for Regulated Canadian Immigration Consultants (RCICs).
             </p>
             <p style={{ fontSize: 11, color: MUTED, letterSpacing: "0.01em" }}>
               A product by Thelvon · SHKUT Acquisition DNA Inc.

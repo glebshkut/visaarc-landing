@@ -36,6 +36,9 @@ export default function About() {
           I did all of this manually. It was bad.
         </h1>
         <p style={{ fontSize: 16, color: MUTED, lineHeight: 1.75 }}>
+          VisaArc is AI automation software for RCICs and Canadian immigration consultants — built after a year of doing immigration paperwork manually.
+        </p>
+        <p style={{ fontSize: 16, color: MUTED, lineHeight: 1.75, marginTop: 20 }}>
           I (Gleb - founder of VisaArc and{" "}
           <a href="https://thelvon.com" target="_blank" rel="noopener" style={{ color: ACCENT, textDecoration: "none" }}>
             Thelvon

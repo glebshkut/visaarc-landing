@@ -47,7 +47,7 @@ export default function Security() {
           Client data is the most sensitive thing in your practice. We treat it that way.
         </h1>
         <p style={{ fontSize: 16, color: MUTED, lineHeight: 1.75 }}>
-          Every practice on VisaArc runs on Canadian infrastructure, under Canadian privacy law, with access controls scoped to your team only.
+          Every practice on VisaArc runs on Canadian infrastructure, under Canadian privacy law, with access controls scoped to your team only. Built for RCICs who need PIPEDA-compliant immigration software hosted in Canada.
         </p>
       </section>
 
