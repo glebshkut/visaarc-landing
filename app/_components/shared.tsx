@@ -1,7 +1,8 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useMemo } from "react";
 import Link from "next/link";
+import { getStoredUtmParams } from "@/lib/utm-client";
 
 export const BORDER = "#1e2124";
 export const MUTED = "#9ca3af";
@@ -137,6 +138,25 @@ function formatPhone(raw: string) {
   return `+${digits.slice(0, 1)} (${digits.slice(1, 4)}) ${digits.slice(4, 7)}-${digits.slice(7, 11)}`;
 }
 
+const CAL_BOOKING_URL = "https://cal.com/team/thelvon/strategy-call";
+
+function toE164Phone(phone: string) {
+  const digits = phone.replace(/\D/g, "");
+  if (!digits) return "";
+  if (digits.length === 10) return `+1${digits}`;
+  if (digits.length === 11 && digits.startsWith("1")) return `+${digits}`;
+  return `+${digits}`;
+}
+
+function buildCalBookingUrl({ name, email, phone }: { name: string; email: string; phone: string }) {
+  const params = new URLSearchParams();
+  params.set("name", name.trim());
+  params.set("email", email.trim());
+  const e164 = toE164Phone(phone);
+  if (e164) params.set("smsReminderNumber", e164);
+  return `${CAL_BOOKING_URL}?${params.toString()}`;
+}
+
 export function AccessModal({ onClose }: { onClose: () => void }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -144,6 +164,11 @@ export function AccessModal({ onClose }: { onClose: () => void }) {
   const [volume, setVolume] = useState<VolumeOption | "">("");
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [submitted, setSubmitted] = useState(false);
+
+  const calBookingUrl = useMemo(
+    () => buildCalBookingUrl({ name, email, phone }),
+    [name, email, phone],
+  );
 
   const handleKey = useCallback((e: KeyboardEvent) => {
     if (e.key === "Escape") onClose();
@@ -176,7 +201,15 @@ export function AccessModal({ onClose }: { onClose: () => void }) {
     fetch("/api/access", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name: name.trim(), email: email.trim(), phone, volume, source: "visaarc-landing", timestamp: new Date().toISOString() }),
+      body: JSON.stringify({
+        name: name.trim(),
+        email: email.trim(),
+        phone,
+        volume,
+        source: "visaarc-landing",
+        timestamp: new Date().toISOString(),
+        utm: getStoredUtmParams(),
+      }),
     }).catch(() => {});
     setSubmitted(true);
   }
@@ -263,7 +296,7 @@ export function AccessModal({ onClose }: { onClose: () => void }) {
               Your account is being configured. Book a setup session to get VisaArc running for your practice today.
             </p>
             <a
-              href="https://cal.com/team/thelvon/strategy-call"
+              href={calBookingUrl}
               target="_blank" rel="noopener"
               style={{ ...ctaBtnBase, fontSize: 14, padding: "13px 26px", borderRadius: 8, display: "inline-flex" }}
               onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.transform = "translateY(-1px)"; el.style.filter = "brightness(1.08)"; el.style.boxShadow = "0 0 0 1px rgba(91,141,246,0.5), 0 8px 28px rgba(91,141,246,0.38), 0 2px 6px rgba(0,0,0,0.5)"; }}

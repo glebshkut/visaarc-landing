@@ -6,6 +6,7 @@ import {
   websiteSchema,
 } from "./_components/structured-data";
 import { defaultSiteMetadata } from "@/lib/site";
+import { UtmCapture } from "./_components/utm-capture";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
@@ -25,6 +26,7 @@ export default function RootLayout({
   return (
     <html lang="en-CA" className={`${inter.variable} ${spaceGrotesk.variable}`}>
       <body style={{ fontFamily: "var(--font-inter), system-ui, sans-serif" }}>
+        <UtmCapture />
         <StructuredData data={[organizationSchema(), websiteSchema()]} />
         {children}
       </body>

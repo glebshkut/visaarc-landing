@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { escapeTelegramHtml, sendTelegramMessage } from '@/lib/telegram';
+import { formatUtmLines, sanitizeUtmParams, type UtmParams } from '@/lib/utm';
 
 const VOLUME_OPTIONS = ['0–10', '10–50', '50–100', '100–500', '500+'] as const;
 
@@ -10,6 +11,7 @@ interface AccessFormPayload {
   volume?: string;
   source?: string;
   timestamp?: string;
+  utm?: UtmParams;
 }
 
 function validatePayload(body: AccessFormPayload) {
@@ -36,6 +38,8 @@ function formatAccessMessage(body: AccessFormPayload) {
     body.timestamp ?? new Date().toISOString(),
   );
 
+  const utm = sanitizeUtmParams(body.utm);
+
   return [
     '<b>New VisaArc access request</b>',
     '',
@@ -45,6 +49,7 @@ function formatAccessMessage(body: AccessFormPayload) {
     `<b>Volume:</b> ${volume} applications/month`,
     `<b>Source:</b> ${source}`,
     `<b>Time:</b> ${timestamp}`,
+    ...formatUtmLines(utm, escapeTelegramHtml),
   ].join('\n');
 }
 
