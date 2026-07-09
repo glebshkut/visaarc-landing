@@ -13,6 +13,7 @@ export default function Terms() {
   return (
     <>
       <nav
+        className="terms-nav"
         style={{
           position: "fixed",
           top: 0,
@@ -26,7 +27,6 @@ export default function Terms() {
           height: 56,
           display: "flex",
           alignItems: "center",
-          padding: "0 32px",
         }}
       >
         <div style={{ display: "flex", alignItems: "center", gap: 10, flex: 1 }}>
@@ -55,13 +55,7 @@ export default function Terms() {
         </div>
       </nav>
 
-      <main
-        style={{
-          maxWidth: 720,
-          margin: "0 auto",
-          padding: "100px 24px 80px",
-        }}
-      >
+      <main className="terms-main" style={{ maxWidth: 720, margin: "0 auto" }}>
         <p
           style={{
             fontSize: 10.5,

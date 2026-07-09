@@ -113,19 +113,7 @@ export default function HomePage() {
 
       <Nav onGetAccess={() => setModalOpen(true)} />
 
-      <section
-        style={{
-          minHeight: "100vh",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          padding: "100px 24px 80px",
-          position: "relative",
-          overflow: "hidden",
-          textAlign: "center",
-        }}
-      >
+      <section className="section-hero">
         <div
           style={{
             position: "absolute",
@@ -155,7 +143,7 @@ export default function HomePage() {
           }}
         >
           <div style={{ width: 5, height: 5, borderRadius: "50%", background: ACCENT, flexShrink: 0 }} />
-          <span style={{ fontSize: 10, fontWeight: 600, letterSpacing: "0.12em", color: ACCENT, textTransform: "uppercase" }}>
+          <span style={{ fontSize: "clamp(9px, 2.5vw, 10px)", fontWeight: 600, letterSpacing: "0.12em", color: ACCENT, textTransform: "uppercase" }}>
             AI Automation for Regulated Canadian Immigration Consultants
           </span>
         </div>
@@ -200,22 +188,14 @@ export default function HomePage() {
       </section>
 
       <div
+        className="grid-trust-bar"
         style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(4,1fr)",
           borderTop: `1px solid ${BORDER}`,
           borderBottom: `1px solid ${BORDER}`,
         }}
       >
-        {["AWS ca-central-1", "PIPEDA Compliant", "Built for RCICs", "CICC-Aware"].map((item, i, arr) => (
-          <div
-            key={item}
-            style={{
-              padding: "20px 24px",
-              textAlign: "center",
-              borderRight: i < arr.length - 1 ? `1px solid ${BORDER}` : "none",
-            }}
-          >
+        {["AWS ca-central-1", "PIPEDA Compliant", "Built for RCICs", "CICC-Aware"].map((item) => (
+          <div key={item} className="trust-bar-cell">
             <span style={{ fontSize: 10.5, fontWeight: 600, letterSpacing: "0.1em", color: MUTED, textTransform: "uppercase" }}>
               {item}
             </span>
@@ -223,7 +203,7 @@ export default function HomePage() {
         ))}
       </div>
 
-      <section id="features" style={{ padding: "100px 24px", maxWidth: 1120, margin: "0 auto" }}>
+      <section id="features" className="section-content">
         <p style={{ fontSize: 10.5, fontWeight: 600, letterSpacing: "0.12em", color: ACCENT, textTransform: "uppercase", marginBottom: 14 }}>
           Immigration Consultant Automation
         </p>
@@ -235,9 +215,9 @@ export default function HomePage() {
         </p>
 
         <div style={{ border: `1px solid ${BORDER}`, borderRadius: 8, overflow: "hidden" }}>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 1, background: BORDER }}>
+          <div className="grid-features">
             {features.map((f) => (
-              <div key={f.title} style={{ background: BG, padding: "30px 26px" }}>
+              <div key={f.title} className="card-padding" style={{ background: BG }}>
                 <div
                   style={{
                     width: 32,
@@ -257,7 +237,7 @@ export default function HomePage() {
               </div>
             ))}
           </div>
-          <div style={{ borderTop: `1px solid ${BORDER}`, background: SURFACE, padding: "22px 32px", textAlign: "center" }}>
+          <div style={{ borderTop: `1px solid ${BORDER}`, background: SURFACE, padding: "18px 20px", textAlign: "center" }}>
             <p style={{ fontSize: 13, color: MUTED, lineHeight: 1.65, fontStyle: "italic" }}>
               Plus whatever else your practice needs - snap in the features you need, not a generic package.
             </p>
@@ -265,7 +245,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section style={{ padding: "0 24px 80px", maxWidth: 760, margin: "0 auto" }}>
+      <section className="section-narrow">
         <p style={{ fontSize: 10.5, fontWeight: 600, letterSpacing: "0.12em", color: ACCENT, textTransform: "uppercase", marginBottom: 14 }}>
           How It Works
         </p>
@@ -277,7 +257,7 @@ export default function HomePage() {
           {steps.map((s, i) => (
             <div key={s.n}>
               {i > 0 && <div style={{ height: 1, background: BORDER }} />}
-              <div style={{ padding: "28px 32px", display: "flex", gap: 20, alignItems: "flex-start" }}>
+              <div className="card-padding" style={{ display: "flex", gap: 20, alignItems: "flex-start" }}>
                 <div
                   style={{
                     width: 28,
@@ -303,7 +283,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section id="faq" style={{ padding: "0 24px 80px", maxWidth: 760, margin: "0 auto" }}>
+      <section id="faq" className="section-narrow">
         <p style={{ fontSize: 10.5, fontWeight: 600, letterSpacing: "0.12em", color: ACCENT, textTransform: "uppercase", marginBottom: 14 }}>
           FAQ
         </p>
@@ -315,7 +295,7 @@ export default function HomePage() {
           {FAQ_ITEMS.map((item, i) => (
             <article key={item.question}>
               {i > 0 && <div style={{ height: 1, background: BORDER }} />}
-              <div style={{ padding: "28px 32px" }}>
+              <div className="card-padding">
                 <h3 style={{ fontSize: 14, fontWeight: 600, color: FG, letterSpacing: "-0.01em", marginBottom: 8 }}>
                   {item.question}
                 </h3>
@@ -326,16 +306,16 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section style={{ padding: "0 24px 120px", maxWidth: 760, margin: "0 auto", textAlign: "center" }}>
+      <section className="section-narrow" style={{ paddingBottom: 96, textAlign: "center" }}>
         <div
           style={{
             border: `1px solid ${BORDER}`,
             borderRadius: 12,
-            padding: "56px 48px",
             background: `linear-gradient(160deg, #0d0f12 0%, ${SURFACE} 100%)`,
             position: "relative",
             overflow: "hidden",
           }}
+          className="cta-card"
         >
           <div
             style={{

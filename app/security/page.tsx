@@ -39,7 +39,7 @@ export default function Security() {
 
       <Nav onGetAccess={() => setModalOpen(true)} activePage="security" />
 
-      <section style={{ padding: "150px 24px 80px", maxWidth: 720, margin: "0 auto", textAlign: "center" }}>
+      <section className="section-page-hero">
         <p style={{ fontSize: 10.5, fontWeight: 600, letterSpacing: "0.12em", color: ACCENT, textTransform: "uppercase", marginBottom: 16 }}>
           Security
         </p>
@@ -51,11 +51,11 @@ export default function Security() {
         </p>
       </section>
 
-      <section style={{ padding: "0 24px 100px", maxWidth: 1000, margin: "0 auto" }}>
+      <section className="section-narrow" style={{ maxWidth: 1000 }}>
         <div style={{ border: `1px solid ${BORDER}`, borderRadius: 8, overflow: "hidden" }}>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(2,1fr)", gap: 1, background: BORDER }}>
+          <div className="grid-security">
             {secItems.map(item => (
-              <div key={item.title} style={{ background: BG, padding: "32px 28px" }}>
+              <div key={item.title} className="card-padding" style={{ background: BG }}>
                 <p style={{ fontSize: 13.5, fontWeight: 600, color: FG, letterSpacing: "-0.01em", marginBottom: 10 }}>{item.title}</p>
                 <p style={{ fontSize: 12.5, color: MUTED, lineHeight: 1.65 }}>{item.desc}</p>
               </div>
@@ -64,7 +64,7 @@ export default function Security() {
         </div>
       </section>
 
-      <section style={{ padding: "0 24px 120px", maxWidth: 640, margin: "0 auto", textAlign: "center" }}>
+      <section className="section-narrow" style={{ paddingBottom: 96, maxWidth: 640, textAlign: "center" }}>
         <p style={{ fontSize: 15, color: MUTED, lineHeight: 1.75, marginBottom: 32 }}>
           Have a specific security or compliance question before requesting access? We&apos;re glad to walk through our architecture on a call.
         </p>

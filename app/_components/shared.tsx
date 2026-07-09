@@ -211,6 +211,7 @@ export function AccessModal({ onClose }: { onClose: () => void }) {
 
       <div
         onClick={e => e.stopPropagation()}
+        className="modal-panel"
         style={{
           background: "#0d0f11",
           border: `1px solid ${BORDER}`,
@@ -219,7 +220,6 @@ export function AccessModal({ onClose }: { onClose: () => void }) {
           maxWidth: 480,
           maxHeight: "90vh",
           overflowY: "auto",
-          padding: "40px 40px 36px",
           position: "relative",
           animation: "slideUp 0.22s cubic-bezier(0.16,1,0.3,1)",
           boxShadow: "0 32px 80px rgba(0,0,0,0.7), 0 0 0 1px rgba(255,255,255,0.04)",
@@ -393,6 +393,23 @@ export function Nav({
   onGetAccess: () => void;
   activePage?: "about" | "security";
 }) {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const closeMenu = useCallback(() => setMenuOpen(false), []);
+
+  useEffect(() => {
+    if (!menuOpen) return;
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") closeMenu();
+    };
+    document.addEventListener("keydown", handleKey);
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", handleKey);
+      document.body.style.overflow = "";
+    };
+  }, [menuOpen, closeMenu]);
+
   const linkStyle = (active: boolean): React.CSSProperties => ({
     fontSize: 13,
     color: active ? FG : MUTED,
@@ -402,54 +419,99 @@ export function Nav({
   });
 
   return (
-    <nav style={{
-      position: "fixed", top: 0, left: 0, right: 0, zIndex: 100,
-      background: "rgba(8,9,10,0.88)", backdropFilter: "blur(12px)",
-      WebkitBackdropFilter: "blur(12px)",
-      borderBottom: `1px solid ${BORDER}`,
-      height: 56, display: "flex", alignItems: "center", padding: "0 32px",
-    }}>
-      {/* Left: logo + by Thelvon */}
-      <div style={{ flex: 1, display: "flex", alignItems: "center", gap: 14 }}>
-        <Link href="/" style={{ display: "flex", alignItems: "center", gap: 10, textDecoration: "none" }}>
-          <Logo width={40} />
-          <span style={{ fontSize: 16, ...WORDMARK, position: "relative", top: 1 }}>VisaArc</span>
-        </Link>
-        <a href="https://thelvon.com" target="_blank" rel="noopener"
-          style={{ fontSize: 12, color: MUTED, textDecoration: "none", letterSpacing: "-0.01em", paddingTop: 3, transition: "color 0.12s" }}
-          onMouseEnter={e => (e.currentTarget.style.color = FG)}
-          onMouseLeave={e => (e.currentTarget.style.color = MUTED)}>
-          by Thelvon
-        </a>
-      </div>
+    <>
+      <nav className="site-nav">
+        <div className="site-nav-inner">
+          <div className="site-nav-left">
+            <Link href="/" style={{ display: "flex", alignItems: "center", gap: 10, textDecoration: "none" }}>
+              <Logo width={40} />
+              <span style={{ fontSize: 16, ...WORDMARK, position: "relative", top: 1 }}>VisaArc</span>
+            </Link>
+            <a
+              href="https://thelvon.com"
+              target="_blank"
+              rel="noopener"
+              className="nav-thelvon-desktop"
+              style={{ fontSize: 12, color: MUTED, textDecoration: "none", letterSpacing: "-0.01em", paddingTop: 3, transition: "color 0.12s" }}
+              onMouseEnter={e => (e.currentTarget.style.color = FG)}
+              onMouseLeave={e => (e.currentTarget.style.color = MUTED)}
+            >
+              by Thelvon
+            </a>
+          </div>
 
-      {/* Center: nav links (truly centered in the bar) */}
-      <div style={{
-        position: "absolute", left: "50%", transform: "translateX(-50%)",
-        display: "flex", alignItems: "center", gap: 28,
-      }}>
-        <Link href="/about" style={linkStyle(activePage === "about")}
-          onMouseEnter={e => (e.currentTarget.style.color = FG)}
-          onMouseLeave={e => (e.currentTarget.style.color = activePage === "about" ? FG : MUTED)}>
-          About
-        </Link>
-        <Link href="/security" style={linkStyle(activePage === "security")}
-          onMouseEnter={e => (e.currentTarget.style.color = FG)}
-          onMouseLeave={e => (e.currentTarget.style.color = activePage === "security" ? FG : MUTED)}>
-          Security
-        </Link>
-        <Link href="/#features" style={linkStyle(false)}
-          onMouseEnter={e => (e.currentTarget.style.color = FG)}
-          onMouseLeave={e => (e.currentTarget.style.color = MUTED)}>
-          Features
-        </Link>
-      </div>
+          <div className="site-nav-center">
+            <Link href="/about" style={linkStyle(activePage === "about")}
+              onMouseEnter={e => (e.currentTarget.style.color = FG)}
+              onMouseLeave={e => (e.currentTarget.style.color = activePage === "about" ? FG : MUTED)}>
+              About
+            </Link>
+            <Link href="/security" style={linkStyle(activePage === "security")}
+              onMouseEnter={e => (e.currentTarget.style.color = FG)}
+              onMouseLeave={e => (e.currentTarget.style.color = activePage === "security" ? FG : MUTED)}>
+              Security
+            </Link>
+            <Link href="/#features" style={linkStyle(false)}
+              onMouseEnter={e => (e.currentTarget.style.color = FG)}
+              onMouseLeave={e => (e.currentTarget.style.color = MUTED)}>
+              Features
+            </Link>
+          </div>
 
-      {/* Right: CTA */}
-      <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "flex-end" }}>
-        <CtaButton size="sm" onClick={onGetAccess}>Try it out</CtaButton>
-      </div>
-    </nav>
+          <div className="site-nav-right">
+            <CtaButton size="sm" onClick={onGetAccess}>Try it out</CtaButton>
+            <button
+              type="button"
+              className="nav-mobile-toggle"
+              onClick={() => setMenuOpen(open => !open)}
+              aria-label={menuOpen ? "Close menu" : "Open menu"}
+              aria-expanded={menuOpen}
+            >
+              {menuOpen ? (
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="M3 3l10 10M13 3L3 13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+                </svg>
+              ) : (
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="M2 4.5h12M2 8h12M2 11.5h12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+                </svg>
+              )}
+            </button>
+          </div>
+        </div>
+      </nav>
+
+      {menuOpen && (
+        <div className="nav-mobile-menu" role="dialog" aria-label="Navigation menu">
+          <Link
+            href="/about"
+            className={`nav-mobile-link${activePage === "about" ? " nav-mobile-link--active" : ""}`}
+            onClick={closeMenu}
+          >
+            About
+          </Link>
+          <Link
+            href="/security"
+            className={`nav-mobile-link${activePage === "security" ? " nav-mobile-link--active" : ""}`}
+            onClick={closeMenu}
+          >
+            Security
+          </Link>
+          <Link href="/#features" className="nav-mobile-link" onClick={closeMenu}>
+            Features
+          </Link>
+          <a
+            href="https://thelvon.com"
+            target="_blank"
+            rel="noopener"
+            className="nav-mobile-thelvon"
+            onClick={closeMenu}
+          >
+            by Thelvon
+          </a>
+        </div>
+      )}
+    </>
   );
 }
 
@@ -461,9 +523,9 @@ export function Footer({ onGetAccess }: { onGetAccess?: () => void }) {
   });
 
   return (
-    <footer style={{ borderTop: `1px solid ${BORDER}`, padding: "60px 24px 0" }}>
+    <footer style={{ borderTop: `1px solid ${BORDER}`, padding: "48px 20px 0" }}>
       <div style={{ maxWidth: 1100, margin: "0 auto" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 48, paddingBottom: 48 }}>
+        <div className="grid-footer">
           <div>
             <div style={{ display: "flex", alignItems: "center", gap: 9, marginBottom: 14 }}>
               <Logo width={36} />
@@ -528,7 +590,7 @@ export function Footer({ onGetAccess }: { onGetAccess?: () => void }) {
           </div>
         </div>
 
-        <div style={{ borderTop: `1px solid ${BORDER}`, padding: "20px 0", display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 10 }}>
+        <div className="footer-bar" style={{ borderTop: `1px solid ${BORDER}`, padding: "20px 0", display: "flex" }}>
           <p style={{ fontSize: 11, color: MUTED }}>© 2026 SHKUT Acquisition DNA Inc. (operating as Thelvon). All rights reserved.</p>
           <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
             <a href="/terms"

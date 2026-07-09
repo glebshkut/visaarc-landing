@@ -19,7 +19,7 @@ const values = [
 ];
 
 export default function About() {
-  
+
   const [modalOpen, setModalOpen] = useState(false);
 
   return (
@@ -28,7 +28,7 @@ export default function About() {
 
       <Nav onGetAccess={() => setModalOpen(true)} activePage="about" />
 
-      <section style={{ padding: "150px 24px 90px", maxWidth: 720, margin: "0 auto", textAlign: "center" }}>
+      <section className="section-page-hero">
         <p style={{ fontSize: 10.5, fontWeight: 600, letterSpacing: "0.12em", color: ACCENT, textTransform: "uppercase", marginBottom: 16 }}>
           About
         </p>
@@ -56,11 +56,11 @@ export default function About() {
         </p>
       </section>
 
-      <section style={{ padding: "0 24px 100px", maxWidth: 1000, margin: "0 auto" }}>
+      <section className="section-narrow" style={{ maxWidth: 1000 }}>
         <div style={{ border: `1px solid ${BORDER}`, borderRadius: 8, overflow: "hidden" }}>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 1, background: BORDER }}>
+          <div className="grid-values">
             {values.map(v => (
-              <div key={v.title} style={{ background: BG, padding: "32px 28px" }}>
+              <div key={v.title} className="card-padding" style={{ background: BG }}>
                 <p style={{ fontSize: 13.5, fontWeight: 600, color: FG, letterSpacing: "-0.01em", marginBottom: 10 }}>{v.title}</p>
                 <p style={{ fontSize: 12.5, color: MUTED, lineHeight: 1.65 }}>{v.desc}</p>
               </div>
@@ -69,7 +69,7 @@ export default function About() {
         </div>
       </section>
 
-      <section style={{ padding: "0 24px 120px", maxWidth: 640, margin: "0 auto", textAlign: "center" }}>
+      <section className="section-narrow" style={{ paddingBottom: 96, maxWidth: 640, textAlign: "center" }}>
         <p style={{ fontSize: 15, color: MUTED, lineHeight: 1.75, marginBottom: 32 }}>
           I&apos;ve been on both sides of this. The tedious document work that eats hours you should spend on the people you&apos;re actually trying to help. That&apos;s what VisaArc is for.
         </p>
