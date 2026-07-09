@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Nav, Footer, AccessModal, BORDER, MUTED, ACCENT, FG, BG, CtaButton } from "../_components/shared";
+import { PageHero, Reveal, AnimateIn } from "../_components/motion";
 
 const secItems = [
   {
@@ -39,38 +40,41 @@ export default function Security() {
 
       <Nav onGetAccess={() => setModalOpen(true)} activePage="security" />
 
-      <section className="section-page-hero">
-        <p style={{ fontSize: 10.5, fontWeight: 600, letterSpacing: "0.12em", color: ACCENT, textTransform: "uppercase", marginBottom: 16 }}>
-          Security
-        </p>
-        <h1 style={{ fontSize: "clamp(28px,4.5vw,48px)", fontWeight: 600, letterSpacing: "-0.035em", lineHeight: 1.1, color: FG, marginBottom: 24 }}>
-          Client data is the most sensitive thing in your practice. We treat it that way.
-        </h1>
+      <PageHero
+        label="Security"
+        title="Client data is the most sensitive thing in your practice. We treat it that way."
+      >
         <p style={{ fontSize: 16, color: MUTED, lineHeight: 1.75 }}>
           Every practice on VisaArc runs on Canadian infrastructure, under Canadian privacy law, with access controls scoped to your team only. Built for RCICs who need PIPEDA-compliant immigration software hosted in Canada.
         </p>
-      </section>
+      </PageHero>
 
       <section className="section-narrow" style={{ maxWidth: 1000 }}>
-        <div style={{ border: `1px solid ${BORDER}`, borderRadius: 8, overflow: "hidden" }}>
-          <div className="grid-security">
-            {secItems.map(item => (
-              <div key={item.title} className="card-padding" style={{ background: BG }}>
-                <p style={{ fontSize: 13.5, fontWeight: 600, color: FG, letterSpacing: "-0.01em", marginBottom: 10 }}>{item.title}</p>
-                <p style={{ fontSize: 12.5, color: MUTED, lineHeight: 1.65 }}>{item.desc}</p>
-              </div>
-            ))}
+        <Reveal>
+          <div style={{ border: `1px solid ${BORDER}`, borderRadius: 8, overflow: "hidden" }}>
+            <div className="grid-security">
+              {secItems.map((item) => (
+                <div key={item.title} className="card-padding visaarc-step-card" style={{ background: BG }}>
+                  <p style={{ fontSize: 13.5, fontWeight: 600, color: FG, letterSpacing: "-0.01em", marginBottom: 10 }}>{item.title}</p>
+                  <p style={{ fontSize: 12.5, color: MUTED, lineHeight: 1.65 }}>{item.desc}</p>
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
+        </Reveal>
       </section>
 
       <section className="section-narrow" style={{ paddingBottom: 96, maxWidth: 640, textAlign: "center" }}>
-        <p style={{ fontSize: 15, color: MUTED, lineHeight: 1.75, marginBottom: 32 }}>
-          Have a specific security or compliance question before requesting access? We&apos;re glad to walk through our architecture on a call.
-        </p>
-        <CtaButton size="lg" onClick={() => setModalOpen(true)}>
+        <Reveal>
+          <p style={{ fontSize: 15, color: MUTED, lineHeight: 1.75, marginBottom: 32 }}>
+            Have a specific security or compliance question before requesting access? We&apos;re glad to walk through our architecture on a call.
+          </p>
+        </Reveal>
+        <AnimateIn delay={1}>
+          <CtaButton size="lg" onClick={() => setModalOpen(true)}>
             Try it out →
-        </CtaButton>
+          </CtaButton>
+        </AnimateIn>
       </section>
 
       <Footer onGetAccess={() => setModalOpen(true)} />

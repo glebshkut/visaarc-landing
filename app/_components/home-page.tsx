@@ -14,6 +14,14 @@ import {
   BG,
   SURFACE,
 } from "./shared";
+import {
+  Reveal,
+  InfiniteMarquee,
+  HeroGlow,
+  PulsingBadgeDot,
+  SectionLabel,
+  AnimatedDivider,
+} from "./motion";
 
 const features = [
   {
@@ -114,22 +122,11 @@ export default function HomePage() {
       <Nav onGetAccess={() => setModalOpen(true)} />
 
       <section className="section-hero">
-        <div
-          style={{
-            position: "absolute",
-            top: "50%",
-            left: "50%",
-            transform: "translate(-50%,-58%)",
-            width: 800,
-            height: 800,
-            background: `radial-gradient(ellipse at center,${ACCENT} 0%,transparent 60%)`,
-            pointerEvents: "none",
-            borderRadius: "50%",
-            animation: "pulse-glow 7s ease-in-out infinite",
-          }}
-        />
+        <HeroGlow />
 
+        <div className="section-hero-content">
         <div
+          className="visaarc-animate-in"
           style={{
             display: "inline-flex",
             alignItems: "center",
@@ -139,16 +136,16 @@ export default function HomePage() {
             padding: "5px 14px",
             marginBottom: 40,
             background: "rgba(91,141,246,0.05)",
-            position: "relative",
           }}
         >
-          <div style={{ width: 5, height: 5, borderRadius: "50%", background: ACCENT, flexShrink: 0 }} />
+          <PulsingBadgeDot />
           <span style={{ fontSize: "clamp(9px, 2.5vw, 10px)", fontWeight: 600, letterSpacing: "0.12em", color: ACCENT, textTransform: "uppercase" }}>
             AI Automation for Regulated Canadian Immigration Consultants
           </span>
         </div>
 
         <h1
+          className="visaarc-animate-in visaarc-animate-in-delay-1"
           style={{
             fontSize: "clamp(30px,5vw,62px)",
             fontWeight: 600,
@@ -157,27 +154,26 @@ export default function HomePage() {
             maxWidth: 760,
             color: FG,
             marginBottom: 24,
-            position: "relative",
           }}
         >
           AI automation for RCICs that{" "}
-          <span style={{ color: ACCENT }}>actually works</span>
+          <span className="hero-accent-text">actually works</span>
         </h1>
 
         <p
+          className="visaarc-animate-in visaarc-animate-in-delay-2"
           style={{
             fontSize: "clamp(15px,1.8vw,18px)",
             color: MUTED,
             maxWidth: 620,
             lineHeight: 1.7,
             marginBottom: 44,
-            position: "relative",
           }}
         >
           VisaArc is practice management software for Canadian immigration consultants — intelligent document extraction, IRCC form preparation, missing document detection, and client file management in one platform.
         </p>
 
-        <div style={{ position: "relative", display: "flex", flexDirection: "column", alignItems: "center", gap: 14 }}>
+        <div className="visaarc-animate-in visaarc-animate-in-delay-3" style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 14 }}>
           <CtaButton size="lg" onClick={() => setModalOpen(true)}>
             Claim your spot →
           </CtaButton>
@@ -185,39 +181,33 @@ export default function HomePage() {
             No commitment required
           </p>
         </div>
+        </div>
       </section>
 
-      <div
-        className="grid-trust-bar"
-        style={{
-          borderTop: `1px solid ${BORDER}`,
-          borderBottom: `1px solid ${BORDER}`,
-        }}
-      >
-        {["AWS ca-central-1", "PIPEDA Compliant", "Built for RCICs", "CICC-Aware"].map((item) => (
-          <div key={item} className="trust-bar-cell">
-            <span style={{ fontSize: 10.5, fontWeight: 600, letterSpacing: "0.1em", color: MUTED, textTransform: "uppercase" }}>
-              {item}
-            </span>
-          </div>
-        ))}
-      </div>
+      <InfiniteMarquee />
+
+      <AnimatedDivider />
 
       <section id="features" className="section-content">
-        <p style={{ fontSize: 10.5, fontWeight: 600, letterSpacing: "0.12em", color: ACCENT, textTransform: "uppercase", marginBottom: 14 }}>
-          Immigration Consultant Automation
-        </p>
-        <h2 style={{ fontSize: "clamp(24px,3.5vw,42px)", fontWeight: 600, letterSpacing: "-0.03em", color: FG, marginBottom: 16, maxWidth: 640, lineHeight: 1.1 }}>
-          Everything your RCIC practice needs, automated.
-        </h2>
-        <p style={{ fontSize: 14.5, color: MUTED, lineHeight: 1.7, marginBottom: 56, maxWidth: 680 }}>
-          From express entry and work permit files to study permits and permanent residence applications, VisaArc automates the repetitive immigration paperwork that slows Canadian consulting practices down.
-        </p>
+        <Reveal>
+          <SectionLabel>Immigration Consultant Automation</SectionLabel>
+        </Reveal>
+        <Reveal delay={80}>
+          <h2 style={{ fontSize: "clamp(24px,3.5vw,42px)", fontWeight: 600, letterSpacing: "-0.03em", color: FG, marginBottom: 16, maxWidth: 640, lineHeight: 1.1 }}>
+            Everything your RCIC practice needs, automated.
+          </h2>
+        </Reveal>
+        <Reveal delay={140}>
+          <p style={{ fontSize: 14.5, color: MUTED, lineHeight: 1.7, marginBottom: 56, maxWidth: 680 }}>
+            From express entry and work permit files to study permits and permanent residence applications, VisaArc automates the repetitive immigration paperwork that slows Canadian consulting practices down.
+          </p>
+        </Reveal>
 
-        <div style={{ border: `1px solid ${BORDER}`, borderRadius: 8, overflow: "hidden" }}>
+        <Reveal delay={140}>
+          <div style={{ border: `1px solid ${BORDER}`, borderRadius: 8, overflow: "hidden" }}>
           <div className="grid-features">
             {features.map((f) => (
-              <div key={f.title} className="card-padding" style={{ background: BG }}>
+              <div key={f.title} className="visaarc-feature-card card-padding" style={{ background: BG }}>
                 <div
                   style={{
                     width: 32,
@@ -243,21 +233,25 @@ export default function HomePage() {
             </p>
           </div>
         </div>
+        </Reveal>
       </section>
 
       <section className="section-narrow">
-        <p style={{ fontSize: 10.5, fontWeight: 600, letterSpacing: "0.12em", color: ACCENT, textTransform: "uppercase", marginBottom: 14 }}>
-          How It Works
-        </p>
-        <h2 style={{ fontSize: "clamp(22px,3vw,34px)", fontWeight: 600, letterSpacing: "-0.03em", color: FG, marginBottom: 32, lineHeight: 1.15 }}>
-          Onboarding built for immigration consulting workflows
-        </h2>
+        <Reveal>
+          <SectionLabel>How It Works</SectionLabel>
+        </Reveal>
+        <Reveal delay={80}>
+          <h2 style={{ fontSize: "clamp(22px,3vw,34px)", fontWeight: 600, letterSpacing: "-0.03em", color: FG, marginBottom: 32, lineHeight: 1.15 }}>
+            Onboarding built for immigration consulting workflows
+          </h2>
+        </Reveal>
 
-        <div style={{ border: `1px solid ${BORDER}`, borderRadius: 8, overflow: "hidden" }}>
+        <Reveal delay={120}>
+          <div style={{ border: `1px solid ${BORDER}`, borderRadius: 8, overflow: "hidden" }}>
           {steps.map((s, i) => (
             <div key={s.n}>
               {i > 0 && <div style={{ height: 1, background: BORDER }} />}
-              <div className="card-padding" style={{ display: "flex", gap: 20, alignItems: "flex-start" }}>
+              <div className="card-padding visaarc-step-card" style={{ display: "flex", gap: 20, alignItems: "flex-start" }}>
                 <div
                   style={{
                     width: 28,
@@ -281,21 +275,25 @@ export default function HomePage() {
             </div>
           ))}
         </div>
+        </Reveal>
       </section>
 
       <section id="faq" className="section-narrow">
-        <p style={{ fontSize: 10.5, fontWeight: 600, letterSpacing: "0.12em", color: ACCENT, textTransform: "uppercase", marginBottom: 14 }}>
-          FAQ
-        </p>
-        <h2 style={{ fontSize: "clamp(22px,3vw,34px)", fontWeight: 600, letterSpacing: "-0.03em", color: FG, marginBottom: 32, lineHeight: 1.15 }}>
-          Questions from Canadian immigration consultants
-        </h2>
+        <Reveal>
+          <SectionLabel>FAQ</SectionLabel>
+        </Reveal>
+        <Reveal delay={80}>
+          <h2 style={{ fontSize: "clamp(22px,3vw,34px)", fontWeight: 600, letterSpacing: "-0.03em", color: FG, marginBottom: 32, lineHeight: 1.15 }}>
+            Questions from Canadian immigration consultants
+          </h2>
+        </Reveal>
 
-        <div style={{ border: `1px solid ${BORDER}`, borderRadius: 8, overflow: "hidden" }}>
+        <Reveal delay={120}>
+          <div style={{ border: `1px solid ${BORDER}`, borderRadius: 8, overflow: "hidden" }}>
           {FAQ_ITEMS.map((item, i) => (
             <article key={item.question}>
               {i > 0 && <div style={{ height: 1, background: BORDER }} />}
-              <div className="card-padding">
+              <div className="card-padding visaarc-step-card">
                 <h3 style={{ fontSize: 14, fontWeight: 600, color: FG, letterSpacing: "-0.01em", marginBottom: 8 }}>
                   {item.question}
                 </h3>
@@ -304,46 +302,51 @@ export default function HomePage() {
             </article>
           ))}
         </div>
+        </Reveal>
       </section>
 
       <section className="section-narrow" style={{ paddingBottom: 96, textAlign: "center" }}>
-        <div
-          style={{
-            border: `1px solid ${BORDER}`,
-            borderRadius: 12,
-            background: `linear-gradient(160deg, #0d0f12 0%, ${SURFACE} 100%)`,
-            position: "relative",
-            overflow: "hidden",
-          }}
-          className="cta-card"
-        >
+        <Reveal>
           <div
             style={{
-              position: "absolute",
-              top: "50%",
-              left: "50%",
-              transform: "translate(-50%,-50%)",
-              width: 480,
-              height: 240,
-              background: "radial-gradient(ellipse at center,rgba(91,141,246,0.07) 0%,transparent 70%)",
-              pointerEvents: "none",
-              borderRadius: "50%",
+              border: `1px solid ${BORDER}`,
+              borderRadius: 12,
+              background: `linear-gradient(160deg, #0d0f12 0%, ${SURFACE} 100%)`,
+              position: "relative",
+              overflow: "hidden",
             }}
-          />
+            className="cta-card"
+          >
+            <div
+              className="visaarc-cta-glow"
+              style={{
+                position: "absolute",
+                top: "50%",
+                left: "50%",
+                width: 480,
+                height: 240,
+                background: "radial-gradient(ellipse at center,rgba(122,18,32,0.08) 0%,transparent 70%)",
+                pointerEvents: "none",
+                borderRadius: "50%",
+              }}
+            />
 
-          <p style={{ fontSize: 10.5, fontWeight: 600, letterSpacing: "0.12em", color: ACCENT, textTransform: "uppercase", marginBottom: 16 }}>
-            Limited Spots
-          </p>
-          <h2 style={{ fontSize: "clamp(22px,3vw,34px)", fontWeight: 600, letterSpacing: "-0.03em", color: FG, marginBottom: 14, lineHeight: 1.15 }}>
-            Ready to automate your RCIC practice?
-          </h2>
-          <p style={{ fontSize: 14, color: MUTED, lineHeight: 1.7, marginBottom: 36, maxWidth: 420, margin: "0 auto 36px" }}>
-            VisaArc is made for RCICs and Canadian immigration consultants who are serious about efficiency. Join the practices already on the platform.
-          </p>
-          <CtaButton size="lg" onClick={() => setModalOpen(true)}>
-            Try it out →
-          </CtaButton>
-        </div>
+            <p style={{ fontSize: 10.5, fontWeight: 600, letterSpacing: "0.12em", color: ACCENT, textTransform: "uppercase", marginBottom: 16, position: "relative" }}>
+              Limited Spots
+            </p>
+            <h2 style={{ fontSize: "clamp(22px,3vw,34px)", fontWeight: 600, letterSpacing: "-0.03em", color: FG, marginBottom: 14, lineHeight: 1.15, position: "relative" }}>
+              Ready to automate your RCIC practice?
+            </h2>
+            <p style={{ fontSize: 14, color: MUTED, lineHeight: 1.7, marginBottom: 36, maxWidth: 420, margin: "0 auto 36px", position: "relative" }}>
+              VisaArc is made for RCICs and Canadian immigration consultants who are serious about efficiency. Join the practices already on the platform.
+            </p>
+            <div style={{ position: "relative" }}>
+              <CtaButton size="lg" onClick={() => setModalOpen(true)}>
+                Try it out →
+              </CtaButton>
+            </div>
+          </div>
+        </Reveal>
       </section>
 
       <Footer onGetAccess={() => setModalOpen(true)} />
