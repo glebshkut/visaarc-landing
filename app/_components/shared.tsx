@@ -73,7 +73,7 @@ export function CtaButton({
   );
 }
 
-/* ─── Logo — Canadian palette arc ─── */
+/* ─── Logo - Canadian palette arc ─── */
 export function Logo({ width = 48 }: { width?: number }) {
   const h = Math.round(width * (62 / 120));
   return (
@@ -95,7 +95,7 @@ export const WORDMARK: React.CSSProperties = {
 };
 
 /* ─── Modal ─── */
-const VOLUME_OPTIONS = ["0–10", "10–50", "50–100", "100–500", "500+"] as const;
+const VOLUME_OPTIONS = ["0-10", "10-50", "50-100", "100-500", "500+"] as const;
 type VolumeOption = typeof VOLUME_OPTIONS[number];
 
 const inputStyle: React.CSSProperties = {
@@ -575,11 +575,11 @@ export function Footer({ onGetAccess }: { onGetAccess?: () => void }) {
           <div>
             <p style={{ fontSize: 10.5, fontWeight: 600, letterSpacing: "0.1em", color: MUTED, textTransform: "uppercase", marginBottom: 20 }}>Contact</p>
             <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
-              <a href="mailto:gleb@thelvon.com"
+              <a href="mailto:info@thelvon.com"
                 style={{ display: "flex", alignItems: "center", gap: 10, fontSize: 13, color: MUTED, textDecoration: "none", transition: "color 0.12s" }}
                 {...linkHover(MUTED)}>
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1" y="2.5" width="12" height="9" rx="1.5" stroke={MUTED} strokeWidth="1.2" /><path d="M1 4.5l6 4.5L13 4.5" stroke={MUTED} strokeWidth="1.2" strokeLinecap="round" /></svg>
-                gleb@thelvon.com
+                info@thelvon.com
               </a>
               <a href="https://cal.com/team/thelvon/strategy-call" target="_blank" rel="noopener"
                 style={{ display: "flex", alignItems: "center", gap: 10, fontSize: 13, color: MUTED, textDecoration: "none", transition: "color 0.12s" }}
@@ -607,6 +607,11 @@ export function Footer({ onGetAccess }: { onGetAccess?: () => void }) {
                 onMouseEnter={e => (e.currentTarget.style.color = FG)} onMouseLeave={e => (e.currentTarget.style.color = MUTED)}>
                 Security
               </Link>
+              <Link href="/guide/rcic-practice-automation"
+                style={{ fontSize: 13, color: MUTED, textDecoration: "none", transition: "color 0.12s" }}
+                onMouseEnter={e => (e.currentTarget.style.color = FG)} onMouseLeave={e => (e.currentTarget.style.color = MUTED)}>
+                Practice automation guide
+              </Link>
               <a href="https://linkedin.com/company/thelvon" target="_blank" rel="noopener"
                 style={{ display: "flex", alignItems: "center", gap: 10, fontSize: 13, color: MUTED, textDecoration: "none", transition: "color 0.12s" }}
                 {...linkHover(MUTED)}>
@@ -619,6 +624,32 @@ export function Footer({ onGetAccess }: { onGetAccess?: () => void }) {
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1" y="3" width="12" height="8" rx="2" stroke={MUTED} strokeWidth="1.2" /><path d="M6 5.5l3.5 1.5L6 8.5V5.5Z" fill={MUTED} /></svg>
                 YouTube
               </a>
+            </div>
+          </div>
+
+          <div>
+            <p style={{ fontSize: 10.5, fontWeight: 600, letterSpacing: "0.1em", color: MUTED, textTransform: "uppercase", marginBottom: 20 }}>Resources</p>
+            <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
+              <Link href="/solutions/express-entry-automation"
+                style={{ fontSize: 13, color: MUTED, textDecoration: "none", transition: "color 0.12s" }}
+                onMouseEnter={e => (e.currentTarget.style.color = FG)} onMouseLeave={e => (e.currentTarget.style.color = MUTED)}>
+                Express Entry automation
+              </Link>
+              <Link href="/guide/rcic-practice-automation"
+                style={{ fontSize: 13, color: MUTED, textDecoration: "none", transition: "color 0.12s" }}
+                onMouseEnter={e => (e.currentTarget.style.color = FG)} onMouseLeave={e => (e.currentTarget.style.color = MUTED)}>
+                Practice automation guide
+              </Link>
+              <Link href="/blog/automate-ircc-form-preparation"
+                style={{ fontSize: 13, color: MUTED, textDecoration: "none", transition: "color 0.12s" }}
+                onMouseEnter={e => (e.currentTarget.style.color = FG)} onMouseLeave={e => (e.currentTarget.style.color = MUTED)}>
+                Automate IRCC form prep
+              </Link>
+              <Link href="/blog/reduce-ircc-application-refusals"
+                style={{ fontSize: 13, color: MUTED, textDecoration: "none", transition: "color 0.12s" }}
+                onMouseEnter={e => (e.currentTarget.style.color = FG)} onMouseLeave={e => (e.currentTarget.style.color = MUTED)}>
+                Reduce IRCC refusals
+              </Link>
             </div>
           </div>
         </div>

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { FAQ_ITEMS } from "@/lib/site";
 import {
   Nav,
@@ -170,7 +171,7 @@ export default function HomePage() {
             marginBottom: 44,
           }}
         >
-          VisaArc is practice management software for Canadian immigration consultants — intelligent document extraction, IRCC form preparation, missing document detection, and client file management in one platform.
+          VisaArc is practice management software for Canadian immigration consultants - intelligent document extraction, IRCC form preparation, missing document detection, and client file management in one platform.
         </p>
 
         <div className="visaarc-animate-in visaarc-animate-in-delay-3" style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 14 }}>
@@ -199,7 +200,16 @@ export default function HomePage() {
         </Reveal>
         <Reveal delay={140}>
           <p style={{ fontSize: 14.5, color: MUTED, lineHeight: 1.7, marginBottom: 56, maxWidth: 680 }}>
-            From express entry and work permit files to study permits and permanent residence applications, VisaArc automates the repetitive immigration paperwork that slows Canadian consulting practices down.
+            From{" "}
+            <Link href="/solutions/express-entry-automation" style={{ color: ACCENT, textDecoration: "none" }}>express entry</Link>
+            {" "}and{" "}
+            <Link href="/solutions/work-permit-automation" style={{ color: ACCENT, textDecoration: "none" }}>work permit</Link>
+            {" "}files to{" "}
+            <Link href="/solutions/study-permit-automation" style={{ color: ACCENT, textDecoration: "none" }}>study permits</Link>
+            {" "}and{" "}
+            <Link href="/solutions/permanent-residence-automation" style={{ color: ACCENT, textDecoration: "none" }}>permanent residence</Link>
+            {" "}applications, VisaArc automates the repetitive immigration paperwork that slows Canadian consulting practices down. Read the{" "}
+            <Link href="/guide/rcic-practice-automation" style={{ color: ACCENT, textDecoration: "none" }}>RCIC practice automation guide</Link>.
           </p>
         </Reveal>
 

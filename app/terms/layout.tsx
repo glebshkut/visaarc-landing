@@ -10,13 +10,6 @@ export const metadata: Metadata = createPageMetadata({
   description:
     "VisaArc terms of service and privacy policy for Regulated Canadian Immigration Consultants. PIPEDA compliance, Canadian data residency, and communications consent.",
   path: "/terms",
-  keywords: [
-    "VisaArc terms of service",
-    "VisaArc privacy policy",
-    "PIPEDA immigration software",
-    "RCIC software terms",
-    "Canadian immigration consultant privacy",
-  ],
   noIndex: true,
 });
 

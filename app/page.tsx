@@ -8,9 +8,9 @@ import {
 import HomePage from "./_components/home-page";
 
 export const metadata: Metadata = createPageMetadata({
-  title: "AI Automation for RCICs & Canadian Immigration Consultants",
+  title: "RCIC Practice Automation Software",
   description:
-    "VisaArc is AI automation for RCICs and Canadian immigration consultants — document extraction, IRCC form preparation, missing document detection, and client file management. PIPEDA-compliant, hosted in Canada.",
+    "AI automation for RCICs - document extraction, IRCC form prep, and missing-document detection. PIPEDA-compliant, hosted in Canada.",
   path: "/",
 });
 

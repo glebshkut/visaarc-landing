@@ -94,7 +94,7 @@ export default function Terms() {
           },
           {
             title: "3. Communications Consent",
-            body: `By submitting your information, you expressly consent to being contacted by SHKUT Acquisition DNA Inc. (Thelvon/VisaArc) via:\n\n• Email — including onboarding information, product updates, feature announcements, and promotional offers\n• SMS/text message — including account setup messages, reminders, and marketing communications\n• Phone call — including calls from our team for onboarding, support, or sales purposes\n\nYou may opt out of marketing communications at any time by replying STOP to any SMS, clicking unsubscribe in any email, or contacting us at gleb@thelvon.com. Opting out of marketing communications does not affect transactional or service-related messages necessary to operate your account.`,
+            body: `By submitting your information, you expressly consent to being contacted by SHKUT Acquisition DNA Inc. (Thelvon/VisaArc) via:\n\n• Email - including onboarding information, product updates, feature announcements, and promotional offers\n• SMS/text message - including account setup messages, reminders, and marketing communications\n• Phone call - including calls from our team for onboarding, support, or sales purposes\n\nYou may opt out of marketing communications at any time by replying STOP to any SMS, clicking unsubscribe in any email, or contacting us at info@thelvon.com. Opting out of marketing communications does not affect transactional or service-related messages necessary to operate your account.`,
           },
           {
             title: "4. Information We Collect",
@@ -110,11 +110,11 @@ export default function Terms() {
           },
           {
             title: "7. Retention",
-            body: `We retain your personal information for as long as your account is active or as needed to provide services, comply with legal obligations, resolve disputes, and enforce agreements. You may request deletion of your data at any time by contacting gleb@thelvon.com.`,
+            body: `We retain your personal information for as long as your account is active or as needed to provide services, comply with legal obligations, resolve disputes, and enforce agreements. You may request deletion of your data at any time by contacting info@thelvon.com.`,
           },
           {
             title: "8. Your Rights",
-            body: `Under PIPEDA, you have the right to access the personal information we hold about you, request corrections to inaccurate information, withdraw consent (subject to legal or contractual restrictions), and lodge a complaint with the Office of the Privacy Commissioner of Canada. To exercise any of these rights, contact us at gleb@thelvon.com.`,
+            body: `Under PIPEDA, you have the right to access the personal information we hold about you, request corrections to inaccurate information, withdraw consent (subject to legal or contractual restrictions), and lodge a complaint with the Office of the Privacy Commissioner of Canada. To exercise any of these rights, contact us at info@thelvon.com.`,
           },
           {
             title: "9. Limitation of Liability",
@@ -126,7 +126,7 @@ export default function Terms() {
           },
           {
             title: "11. Contact",
-            body: `Questions about these terms or your privacy? Contact us:\n\nSHKUT Acquisition DNA Inc. (operating as Thelvon)\ngleb@thelvon.com\nEdmonton, Alberta, Canada`,
+            body: `Questions about these terms or your privacy? Contact us:\n\nSHKUT Acquisition DNA Inc. (operating as Thelvon)\ninfo@thelvon.com\nEdmonton, Alberta, Canada`,
           },
         ].map((section) => (
           <div

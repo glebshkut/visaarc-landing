@@ -36,22 +36,23 @@ export function organizationSchema() {
     "@context": "https://schema.org",
     "@type": "Organization",
     name: SITE_NAME,
-    legalName: LEGAL_NAME,
-    alternateName: COMPANY_NAME,
     url: SITE_URL,
     logo: absoluteUrl("/icon.png"),
-    email: "gleb@thelvon.com",
+    sameAs: [
+      "https://linkedin.com/company/thelvon",
+      "https://youtube.com/@thelvon",
+    ],
+    parentOrganization: {
+      "@type": "Organization",
+      name: LEGAL_NAME,
+      alternateName: COMPANY_NAME,
+    },
     address: {
       "@type": "PostalAddress",
       addressLocality: "Edmonton",
       addressRegion: "AB",
       addressCountry: "CA",
     },
-    sameAs: [
-      "https://thelvon.com",
-      "https://linkedin.com/company/thelvon",
-      "https://youtube.com/@thelvon",
-    ],
   };
 }
 
@@ -79,36 +80,12 @@ export function softwareApplicationSchema() {
     name: SITE_NAME,
     applicationCategory: "BusinessApplication",
     operatingSystem: "Web",
-    url: SITE_URL,
     description:
-      "AI automation for RCICs and Canadian immigration consultants: document extraction, IRCC form auto-population, missing document detection, and client file management.",
-    offers: {
-      "@type": "Offer",
-      price: "0",
-      priceCurrency: "CAD",
-      availability: "https://schema.org/LimitedAvailability",
-      description: "Limited access for regulated Canadian immigration consultants.",
-    },
-    featureList: [
-      "Intelligent document extraction",
-      "IRCC form auto-population",
-      "Missing document detection",
-      "Client file dashboard",
-      "PIPEDA-compliant Canadian data residency",
-      "White-glove onboarding for RCIC practices",
-    ],
-    audience: {
-      "@type": "Audience",
-      audienceType: "Regulated Canadian Immigration Consultants",
-      geographicArea: {
-        "@type": "Country",
-        name: "Canada",
-      },
-    },
-    provider: {
+      "AI-powered practice management and workflow automation for Regulated Canadian Immigration Consultants (RCICs) - document extraction, IRCC form preparation, missing document detection, and client file management.",
+    url: SITE_URL,
+    publisher: {
       "@type": "Organization",
-      name: LEGAL_NAME,
-      url: "https://thelvon.com",
+      name: `${LEGAL_NAME} (${COMPANY_NAME})`,
     },
   };
 }
@@ -142,5 +119,40 @@ export function breadcrumbSchema(
       name: item.name,
       item: absoluteUrl(item.path),
     })),
+  };
+}
+
+export function articleSchema({
+  title,
+  description,
+  path,
+  datePublished,
+}: {
+  title: string;
+  description: string;
+  path: string;
+  datePublished: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: title,
+    description,
+    url: absoluteUrl(path),
+    datePublished,
+    dateModified: datePublished,
+    author: {
+      "@type": "Organization",
+      name: SITE_NAME,
+    },
+    publisher: {
+      "@type": "Organization",
+      name: SITE_NAME,
+      logo: {
+        "@type": "ImageObject",
+        url: absoluteUrl("/icon.png"),
+      },
+    },
+    mainEntityOfPage: absoluteUrl(path),
   };
 }

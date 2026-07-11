@@ -29,9 +29,13 @@ export default function About() {
 
       <Nav onGetAccess={() => setModalOpen(true)} activePage="about" />
 
-      <PageHero label="About" title="I did all of this manually. It was bad.">
+      <PageHero
+        label="About"
+        title="I did all of this manually. It was bad."
+        subtitle="AI automation built for Canadian immigration consultants"
+      >
         <p style={{ fontSize: 16, color: MUTED, lineHeight: 1.75 }}>
-          VisaArc is AI automation software for RCICs and Canadian immigration consultants — built after a year of doing immigration paperwork manually.
+          VisaArc is AI automation software for RCICs and Canadian immigration consultants - built after a year of doing immigration paperwork manually.
         </p>
         <p style={{ fontSize: 16, color: MUTED, lineHeight: 1.75, marginTop: 20 }}>
           I (Gleb - founder of VisaArc and{" "}
@@ -47,7 +51,7 @@ export default function About() {
           Later, when I came back to Canada, I got the chance to talk with immigration consultant here and realized they have the exact same problem. Just different forms. AI is more accessible now, and I had a year of doing this the painful way. So I started building VisaArc to help them.
         </p>
         <p style={{ fontSize: 16, color: MUTED, lineHeight: 1.75, marginTop: 20 }}>
-          Especially with my software engineering background, I knew I could build a better solution.
+          Especially with my software engineering background, I knew I could build a better solution. VisaArc is built in Edmonton, Alberta - Canadian software for Canadian immigration practices.
         </p>
       </PageHero>
 

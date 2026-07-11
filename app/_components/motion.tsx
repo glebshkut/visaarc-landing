@@ -151,14 +151,21 @@ export function AnimatedDivider() {
 export function PageHero({
   label,
   title,
+  subtitle,
+  align = "center",
   children,
 }: {
   label: string;
   title: string;
+  subtitle?: string;
+  align?: "center" | "left";
   children?: ReactNode;
 }) {
   return (
-    <section className="section-page-hero" style={{ position: "relative", overflow: "hidden" }}>
+    <section
+      className={`section-page-hero${align === "left" ? " section-page-hero--left" : ""}`}
+      style={{ position: "relative", overflow: "hidden" }}
+    >
       <div className="visaarc-hero-bg" aria-hidden="true">
         <div className="visaarc-hero-glow-a" style={{ top: "40%", opacity: 0.6 }} />
         <div className="visaarc-hero-glow-b" style={{ top: "50%", left: "45%", opacity: 0.5 }} />
@@ -172,12 +179,28 @@ export function PageHero({
         </p>
         <h1
           className="visaarc-animate-in visaarc-animate-in-delay-1"
-          style={{ fontSize: "clamp(28px,4.5vw,48px)", fontWeight: 600, letterSpacing: "-0.035em", lineHeight: 1.1, color: "#f0f2f4", marginBottom: 24 }}
+          style={{
+            fontSize: "clamp(28px,4.5vw,48px)",
+            fontWeight: 600,
+            letterSpacing: "-0.035em",
+            lineHeight: 1.1,
+            color: "#f0f2f4",
+            marginBottom: children || subtitle ? 16 : 0,
+            maxWidth: align === "left" ? "100%" : undefined,
+          }}
         >
           {title}
         </h1>
+        {subtitle && (
+          <h2
+            className="visaarc-animate-in visaarc-animate-in-delay-1"
+            style={{ fontSize: "clamp(16px,2.2vw,22px)", fontWeight: 500, letterSpacing: "-0.02em", lineHeight: 1.35, color: "#9ca3af", marginBottom: children ? 20 : 0 }}
+          >
+            {subtitle}
+          </h2>
+        )}
         {children && (
-          <div className="visaarc-animate-in visaarc-animate-in-delay-2">
+          <div className="visaarc-animate-in visaarc-animate-in-delay-2" style={{ width: "100%" }}>
             {children}
           </div>
         )}

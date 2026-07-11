@@ -8,46 +8,6 @@ export const SITE_NAME = "VisaArc";
 export const COMPANY_NAME = "Thelvon";
 export const LEGAL_NAME = "SHKUT Acquisition DNA Inc.";
 
-export const SEO_KEYWORDS = [
-  "VisaArc",
-  "Thelvon",
-  "AI automation for RCICs",
-  "AI automation for immigration consultants",
-  "immigration consultant software Canada",
-  "Canadian immigration consultant software",
-  "RCIC practice management",
-  "RCIC practice management software",
-  "RCIC automation",
-  "RCIC software",
-  "immigration practice management software",
-  "immigration workflow automation",
-  "immigration case management software",
-  "IRCC form automation",
-  "IRCC form preparation",
-  "IRCC form auto-population",
-  "IMM form automation",
-  "Canadian immigration software",
-  "regulated Canadian immigration consultant tools",
-  "CICC compliant software",
-  "PIPEDA compliant immigration software",
-  "immigration document automation",
-  "AI document extraction immigration",
-  "intelligent document extraction",
-  "missing document detection",
-  "client file management immigration",
-  "immigration client dashboard",
-  "Canadian data residency",
-  "AWS ca-central-1 immigration software",
-  "express entry software RCIC",
-  "work permit automation Canada",
-  "study permit automation Canada",
-  "permanent residence application software",
-  "immigration consultant AI tools",
-  "automate immigration paperwork",
-  "immigration consultant efficiency",
-  "Edmonton immigration software",
-];
-
 export const FAQ_ITEMS = [
   {
     question: "What is VisaArc?",
@@ -90,7 +50,8 @@ interface PageMetadataOptions {
   title: string;
   description: string;
   path: string;
-  keywords?: string[];
+  /** Use when the title already includes the brand (e.g. "About VisaArc | …"). */
+  absoluteTitle?: boolean;
   noIndex?: boolean;
 }
 
@@ -98,16 +59,15 @@ export function createPageMetadata({
   title,
   description,
   path,
-  keywords,
+  absoluteTitle = false,
   noIndex = false,
 }: PageMetadataOptions): Metadata {
   const url = absoluteUrl(path);
-  const fullTitle = `${title} | ${SITE_NAME}`;
+  const fullTitle = absoluteTitle ? title : `${title} | ${SITE_NAME}`;
 
   return {
     title: fullTitle,
     description,
-    keywords: keywords ?? SEO_KEYWORDS,
     alternates: {
       canonical: url,
     },
@@ -147,7 +107,6 @@ export const defaultSiteMetadata: Metadata = {
   creator: COMPANY_NAME,
   publisher: LEGAL_NAME,
   category: "technology",
-  keywords: SEO_KEYWORDS,
   robots: {
     index: true,
     follow: true,

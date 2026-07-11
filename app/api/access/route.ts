@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import { escapeTelegramHtml, sendTelegramMessage } from '@/lib/telegram';
 import { formatUtmLines, sanitizeUtmParams, type UtmParams } from '@/lib/utm';
 
-const VOLUME_OPTIONS = ['0–10', '10–50', '50–100', '100–500', '500+'] as const;
+const VOLUME_OPTIONS = ['0-10', '10-50', '50-100', '100-500', '500+'] as const;
 
 interface AccessFormPayload {
   name?: string;

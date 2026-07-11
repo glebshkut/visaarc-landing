@@ -64,6 +64,20 @@ export default function Security() {
         </Reveal>
       </section>
 
+      <section className="section-narrow" style={{ maxWidth: 720 }}>
+        <Reveal>
+          <h2 style={{ fontSize: "clamp(22px,3vw,30px)", fontWeight: 600, letterSpacing: "-0.03em", color: FG, marginBottom: 16, lineHeight: 1.2 }}>
+            CICC-compliant software for regulated practices
+          </h2>
+          <p style={{ fontSize: 15, color: MUTED, lineHeight: 1.75, marginBottom: 16 }}>
+            Regulated Canadian Immigration Consultants operate under College of Immigration and Citizenship Consultants (CICC) rules for confidentiality, recordkeeping, and professional conduct. VisaArc is configured with those obligations in mind - scoped team access, auditable file handling, and Canadian data residency - so your software stack supports how you already practice, rather than fighting it.
+          </p>
+          <p style={{ fontSize: 15, color: MUTED, lineHeight: 1.75 }}>
+            Automation never replaces a consultant&apos;s judgment. VisaArc prepares documents and forms for your review; you remain the regulated professional responsible for advice and submission decisions.
+          </p>
+        </Reveal>
+      </section>
+
       <section className="section-narrow" style={{ paddingBottom: 96, maxWidth: 640, textAlign: "center" }}>
         <Reveal>
           <p style={{ fontSize: 15, color: MUTED, lineHeight: 1.75, marginBottom: 32 }}>
