@@ -16,9 +16,14 @@ import {
 } from "./shared";
 import { PageHero, Reveal, AnimateIn } from "./motion";
 import type { SolutionPageContent } from "@/lib/content/solutions";
+import {
+  SOLUTION_AI_REASSURANCE,
+  SOLUTION_CLIENT_FIT,
+} from "@/lib/content/solutions";
 import type { ComparePageContent } from "@/lib/content/compare";
 import type { BlogPost } from "@/lib/content/blog";
 import { GUIDE } from "@/lib/content/guide";
+import { SWITCHING } from "@/lib/content/switching";
 
 const prose: React.CSSProperties = {
   fontSize: 15,
@@ -138,8 +143,9 @@ export function SolutionPageView({ content }: { content: SolutionPageContent }) 
       }
     >
       <section className="section-narrow" style={{ maxWidth: 720 }}>
-        <Reveal>
+        <Reveal delay={80}>
           <h2 style={{ ...h2Style, marginTop: 0 }}>How VisaArc handles it</h2>
+          <p style={{ ...prose, marginBottom: 20 }}>{SOLUTION_AI_REASSURANCE}</p>
           <div style={{ border: `1px solid ${BORDER}`, borderRadius: 8, overflow: "hidden", marginBottom: 40 }}>
             {content.howItWorks.map((step, i) => (
               <div key={step.title}>
@@ -151,6 +157,11 @@ export function SolutionPageView({ content }: { content: SolutionPageContent }) 
               </div>
             ))}
           </div>
+        </Reveal>
+
+        <Reveal delay={90}>
+          <h2 style={h2Style}>Built around how your clients actually send documents</h2>
+          <p style={{ ...prose, marginBottom: 40 }}>{SOLUTION_CLIENT_FIT}</p>
         </Reveal>
 
         <Reveal delay={80}>
@@ -180,7 +191,6 @@ export function SolutionPageView({ content }: { content: SolutionPageContent }) 
 
         <RelatedBlock
           links={[
-            { href: "/", label: "VisaArc homepage" },
             { href: "/security", label: "PIPEDA & security" },
             ...content.related,
           ]}
@@ -264,9 +274,8 @@ export function ComparePageView({ content }: { content: ComparePageContent }) {
         <RelatedBlock
           title="Keep exploring"
           links={[
-            { href: "/", label: "VisaArc homepage" },
+            { href: "/switching-from-legacy-immigration-software", label: "Switching from legacy software" },
             { href: "/guide/rcic-practice-automation", label: "RCIC practice automation guide" },
-            { href: "/solutions/express-entry-automation", label: "Express Entry automation" },
             { href: "/security", label: "Security & PIPEDA" },
           ]}
         />
@@ -365,9 +374,66 @@ export function GuidePageView() {
         <RelatedBlock
           title="Also worth reading"
           links={[
-            { href: "/", label: "VisaArc homepage" },
             { href: "/about", label: "About VisaArc" },
             { href: "/security", label: "Security & PIPEDA" },
+            { href: "/solutions/express-entry-automation", label: "Express Entry automation" },
+          ]}
+        />
+      </section>
+    </PageShell>
+  );
+}
+
+export function SwitchingPageView() {
+  const content = SWITCHING;
+
+  return (
+    <PageShell
+      label={content.label}
+      title={content.h1}
+      heroChildren={
+        <div style={{ marginTop: 8 }}>
+          {content.intro.map((p) => (
+            <p key={p.slice(0, 32)} style={{ ...prose, marginBottom: 14 }}>
+              {p}
+            </p>
+          ))}
+        </div>
+      }
+    >
+      <section className="section-narrow" style={{ maxWidth: 720 }}>
+        <Reveal>
+          <h2 style={{ ...h2Style, marginTop: 0 }}>Signs it may be time to switch</h2>
+          <div style={{ border: `1px solid ${BORDER}`, borderRadius: 8, overflow: "hidden", marginBottom: 40 }}>
+            {content.signs.map((sign, i) => (
+              <div key={sign.title}>
+                {i > 0 && <div style={{ height: 1, background: BORDER }} />}
+                <div className="card-padding" style={{ background: BG }}>
+                  <h3 style={h3Style}>{sign.title}</h3>
+                  <p style={{ fontSize: 13.5, color: MUTED, lineHeight: 1.7 }}>{sign.body}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </Reveal>
+
+        <Reveal delay={80}>
+          <h2 style={h2Style}>What VisaArc emphasizes instead</h2>
+          <ul style={{ marginBottom: 48, paddingLeft: 20 }}>
+            {content.differentiators.map((item) => (
+              <li key={item} style={{ ...prose, marginBottom: 8 }}>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </Reveal>
+
+        <RelatedBlock
+          title="Related pages"
+          links={[
+            { href: "/guide/rcic-practice-automation", label: "RCIC practice automation guide" },
+            { href: "/security", label: "Security, PIPEDA & AI accuracy" },
+            { href: "/about", label: "About VisaArc" },
             { href: "/solutions/express-entry-automation", label: "Express Entry automation" },
           ]}
         />

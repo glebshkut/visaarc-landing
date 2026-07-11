@@ -21,7 +21,6 @@ import {
   HeroGlow,
   PulsingBadgeDot,
   SectionLabel,
-  AnimatedDivider,
 } from "./motion";
 
 const features = [
@@ -33,7 +32,7 @@ const features = [
       </svg>
     ),
     title: "Intelligent document extraction",
-    desc: "Pulls names, dates, and passport numbers from uploaded client documents automatically.",
+    desc: "Pulls names, dates, and passport numbers from uploaded client documents automatically. Every AI-suggested field is flagged for consultant review - nothing submits on its own.",
   },
   {
     icon: (
@@ -104,7 +103,7 @@ const steps = [
   {
     n: "3",
     title: "Dedicated setup",
-    desc: "Configured and onboarded to your practice. Data stays in Canada. Workflow stays yours.",
+    desc: "Configured and onboarded to your practice - not a fixed tool you have to relearn. Data stays in Canada. Workflow stays yours. You keep a direct line to the person who configured your setup.",
   },
   {
     n: "4",
@@ -187,8 +186,6 @@ export default function HomePage() {
 
       <InfiniteMarquee />
 
-      <AnimatedDivider />
-
       <section id="features" className="section-content">
         <Reveal>
           <SectionLabel>Immigration Consultant Automation</SectionLabel>
@@ -243,6 +240,52 @@ export default function HomePage() {
             </p>
           </div>
         </div>
+        </Reveal>
+      </section>
+
+      <section className="section-narrow">
+        <Reveal>
+          <SectionLabel>Fit</SectionLabel>
+        </Reveal>
+        <Reveal delay={80}>
+          <h2 style={{ fontSize: "clamp(22px,3vw,34px)", fontWeight: 600, letterSpacing: "-0.03em", color: FG, marginBottom: 16, lineHeight: 1.15 }}>
+            Is VisaArc right for my practice?
+          </h2>
+        </Reveal>
+        <Reveal delay={120}>
+          <p style={{ fontSize: 14.5, color: MUTED, lineHeight: 1.7, marginBottom: 28, maxWidth: 640 }}>
+            VisaArc is built for RCICs and immigration consulting practices where application processing is the core time sink - document intake, IMM form prep, missing-file checks, and keeping active cases visible.
+          </p>
+        </Reveal>
+        <Reveal delay={140}>
+          <div style={{ border: `1px solid ${BORDER}`, borderRadius: 8, overflow: "hidden", marginBottom: 8 }}>
+            <div className="card-padding visaarc-step-card" style={{ background: BG }}>
+              <h3 style={{ fontSize: 14, fontWeight: 600, color: FG, letterSpacing: "-0.01em", marginBottom: 8 }}>
+                A strong fit if…
+              </h3>
+              <ul style={{ paddingLeft: 18, margin: 0 }}>
+                {[
+                  "Your team spends hours extracting data from documents and retyping into IRCC forms",
+                  "You want AI that suggests and flags for review - never submits on its own",
+                  "Canadian data residency and PIPEDA-aligned handling matter to your practice",
+                  "You want onboarding mapped to how your firm already works, not a fixed template",
+                ].map((item) => (
+                  <li key={item} style={{ fontSize: 13, color: MUTED, lineHeight: 1.65, marginBottom: 8 }}>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div style={{ height: 1, background: BORDER }} />
+            <div className="card-padding visaarc-step-card" style={{ background: BG }}>
+              <h3 style={{ fontSize: 14, fontWeight: 600, color: FG, letterSpacing: "-0.01em", marginBottom: 8 }}>
+                Probably not the right tool if…
+              </h3>
+              <p style={{ fontSize: 13, color: MUTED, lineHeight: 1.7 }}>
+                You handle a low volume of applications and automation would barely move the needle - or you think AI will destroy the world and you don't want to stay ahead of the curve. In either case, VisaArc is not for you.
+              </p>
+            </div>
+          </div>
         </Reveal>
       </section>
 

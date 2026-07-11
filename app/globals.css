@@ -186,17 +186,17 @@ html { scroll-behavior: smooth; }
   position: absolute;
   top: 0;
   left: 0;
-  width: 160px;
+  width: 180px;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(91, 141, 246, 0.7), transparent);
-  animation: visaarc-line-beam 3.5s ease-in-out infinite;
+  background: linear-gradient(90deg, transparent, rgba(91, 141, 246, 0.85), transparent);
+  animation: visaarc-line-beam 4.5s ease-in-out infinite;
   pointer-events: none;
   z-index: 2;
 }
 .visaarc-marquee-beam--bottom {
   top: auto;
   bottom: 0;
-  animation-delay: 1.75s;
+  animation-delay: 2.25s;
 }
 .visaarc-marquee-viewport {
   overflow: hidden;

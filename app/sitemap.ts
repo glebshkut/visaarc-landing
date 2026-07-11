@@ -4,6 +4,7 @@ import { SOLUTION_PAGES } from "@/lib/content/solutions";
 import { COMPARE_PAGES } from "@/lib/content/compare";
 import { BLOG_POSTS } from "@/lib/content/blog";
 import { GUIDE } from "@/lib/content/guide";
+import { SWITCHING } from "@/lib/content/switching";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();
@@ -32,6 +33,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified,
       changeFrequency: "monthly",
       priority: 0.9,
+    },
+    {
+      url: `${SITE_URL}${SWITCHING.path}`,
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.75,
     },
   ];
 

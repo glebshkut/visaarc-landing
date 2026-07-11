@@ -25,9 +25,34 @@ export const FAQ_ITEMS = [
       "VisaArc auto-populates IMM forms and other IRCC application fields using data extracted from client documents. Fields are prepared against IRCC requirements so your team reviews and submits faster, with fewer manual entry errors.",
   },
   {
+    question: "Does VisaArc's AI submit anything on its own, or could it cause a misrepresentation issue?",
+    answer:
+      "No. VisaArc never submits or finalizes anything automatically. Every AI-extracted or AI-suggested field is flagged for your review before it goes anywhere near a form your firm signs off on. VisaArc also keeps an audit trail of what was AI-suggested versus consultant-verified, so you have a clear record if a question ever comes up. The final judgment call - on every field, every time - stays with your regulated consultant.",
+  },
+  {
     question: "Is VisaArc PIPEDA compliant and hosted in Canada?",
     answer:
       "Yes. VisaArc is PIPEDA-compliant by design and stores client data on AWS ca-central-1 in Canada. Data is encrypted in transit and at rest, with access scoped to your practice team only.",
+  },
+  {
+    question: "What happens to my client data if I ever want to leave VisaArc, or if something happened to VisaArc as a company?",
+    answer:
+      "Your data is yours. You can export your full client files at any time - VisaArc never holds your data hostage. We also support scheduled backups to your own storage, so you always have an independent copy outside the platform.",
+  },
+  {
+    question: "I've tried switching software before and it disrupted my workflow. How is onboarding with VisaArc different?",
+    answer:
+      "We don't hand you a fixed tool and ask you to adapt your practice to it. Onboarding starts with a workflow audit - we map how your firm actually processes files before configuring anything - so the platform fits your existing process instead of forcing you to relearn it. You also keep a direct line to the person who configured your setup, not a support ticket queue.",
+  },
+  {
+    question: "My clients aren't very tech-savvy, or communicate mostly by WhatsApp/phone - will VisaArc still work for us?",
+    answer:
+      "Yes. VisaArc doesn't require your clients to use a portal directly. Staff can intake documents however your clients already send them - WhatsApp, email, in person, handwritten forms - and VisaArc's AI still extracts and validates the data behind the scenes. The workflow adapts to your practice, not the other way around.",
+  },
+  {
+    question: "What if my practice handles many different application types (or only a few uncommon ones)?",
+    answer:
+      "Application-type coverage is scoped to your practice during onboarding - you're not locked into a fixed list. We prioritize automating the application types you actually process most, and can add others as your practice grows.",
   },
   {
     question: "What immigration workflows does VisaArc automate?",

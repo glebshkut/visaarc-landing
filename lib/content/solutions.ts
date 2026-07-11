@@ -17,6 +17,13 @@ export interface SolutionPageContent {
   related: RelatedLink[];
 }
 
+/** Shared trust copy for every use-case page (AI review + client-fit). */
+export const SOLUTION_AI_REASSURANCE =
+  "Every AI-extracted or AI-suggested field is flagged for consultant review before submission. VisaArc suggests - your regulated consultant decides.";
+
+export const SOLUTION_CLIENT_FIT =
+  "Works whether clients send files by WhatsApp, email, in person, or handwritten forms. Staff can intake however your practice already works - clients do not need a self-service portal.";
+
 export const SOLUTION_PAGES: SolutionPageContent[] = [
   {
     slug: "express-entry-automation",
@@ -33,7 +40,7 @@ export const SOLUTION_PAGES: SolutionPageContent[] = [
     howItWorks: [
       {
         title: "Document extraction",
-        body: "VisaArc pulls names, dates, passport numbers, and other structured fields from uploaded client documents so your team spends less time hunting through PDFs.",
+        body: "VisaArc pulls names, dates, passport numbers, and other structured fields from uploaded client documents so your team spends less time hunting through PDFs. Every AI-extracted field is flagged for consultant review - nothing is submitted automatically.",
       },
       {
         title: "IRCC field population",
@@ -82,7 +89,7 @@ export const SOLUTION_PAGES: SolutionPageContent[] = [
     howItWorks: [
       {
         title: "Document extraction",
-        body: "Upload employer letters, passports, and supporting files - VisaArc extracts structured client and employment details for the application package.",
+        body: "Upload employer letters, passports, and supporting files - VisaArc extracts structured client and employment details for the application package. Every AI-extracted field is flagged for consultant review - nothing is submitted automatically.",
       },
       {
         title: "IMM form preparation",
@@ -131,7 +138,7 @@ export const SOLUTION_PAGES: SolutionPageContent[] = [
     howItWorks: [
       {
         title: "Document extraction",
-        body: "Letters of acceptance, passports, and financial documents feed structured data into the student file without line-by-line retyping.",
+        body: "Letters of acceptance, passports, and financial documents feed structured data into the student file without line-by-line retyping. Every AI-extracted field is flagged for consultant review - nothing is submitted automatically.",
       },
       {
         title: "IRCC form prep",
@@ -180,7 +187,7 @@ export const SOLUTION_PAGES: SolutionPageContent[] = [
     howItWorks: [
       {
         title: "Document extraction",
-        body: "Pull structured data from civil documents, passports, and supporting evidence into the PR file instead of re-keying every field.",
+        body: "Pull structured data from civil documents, passports, and supporting evidence into the PR file instead of re-keying every field. Every AI-extracted field is flagged for consultant review - nothing is submitted automatically.",
       },
       {
         title: "IMM form preparation",

@@ -22,6 +22,10 @@ const secItems = [
     desc: "Only your practice's authorized team can access your files. No cross-practice visibility, ever.",
   },
   {
+    title: "Data portability",
+    desc: "Export your full client files at any time. Scheduled backups to your own storage are supported, so you always keep an independent copy outside the platform.",
+  },
+  {
     title: "Built with CICC obligations in mind",
     desc: "Configured around the recordkeeping and confidentiality expectations regulated consultants already operate under.",
   },
@@ -61,6 +65,20 @@ export default function Security() {
               ))}
             </div>
           </div>
+        </Reveal>
+      </section>
+
+      <section className="section-narrow" style={{ maxWidth: 720 }}>
+        <Reveal>
+          <h2 style={{ fontSize: "clamp(22px,3vw,30px)", fontWeight: 600, letterSpacing: "-0.03em", color: FG, marginBottom: 16, lineHeight: 1.2 }}>
+            How VisaArc handles AI accuracy
+          </h2>
+          <p style={{ fontSize: 15, color: MUTED, lineHeight: 1.75, marginBottom: 16 }}>
+            Under Canadian immigration rules, a factual error submitted on a client&apos;s behalf can carry serious consequences - including findings of misrepresentation even when the error was unintentional. That is why VisaArc is built as a suggestion-and-review system, not an auto-submitter.
+          </p>
+          <p style={{ fontSize: 15, color: MUTED, lineHeight: 1.75, marginBottom: 16 }}>
+            Every AI-extracted or AI-suggested field is flagged for consultant review before it can go onto a form your firm signs off on. VisaArc keeps an audit trail of what was AI-suggested versus consultant-verified, so you have a clear record if a compliance question ever comes up. The final judgment call stays with your regulated consultant - on every field, every time.
+          </p>
         </Reveal>
       </section>
 

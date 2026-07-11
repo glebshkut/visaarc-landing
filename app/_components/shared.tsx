@@ -650,6 +650,11 @@ export function Footer({ onGetAccess }: { onGetAccess?: () => void }) {
                 onMouseEnter={e => (e.currentTarget.style.color = FG)} onMouseLeave={e => (e.currentTarget.style.color = MUTED)}>
                 Reduce IRCC refusals
               </Link>
+              <Link href="/switching-from-legacy-immigration-software"
+                style={{ fontSize: 13, color: MUTED, textDecoration: "none", transition: "color 0.12s" }}
+                onMouseEnter={e => (e.currentTarget.style.color = FG)} onMouseLeave={e => (e.currentTarget.style.color = MUTED)}>
+                Switching from legacy software
+              </Link>
             </div>
           </div>
         </div>
